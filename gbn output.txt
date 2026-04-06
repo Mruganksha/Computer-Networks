@@ -1,0 +1,60 @@
+ python gbn.py
+
+Window starting at packet 0
+Sending packet 0
+Sending packet 1
+Sending packet 2
+Packet 2 lost!
+
+Window starting at packet 2
+Sending packet 2
+Sending packet 3
+Sending packet 4
+Sending packet 5
+
+Window starting at packet 6
+Sending packet 6
+Packet 6 lost!
+
+Window starting at packet 6
+Sending packet 6
+Packet 6 lost!
+
+Window starting at packet 6
+Sending packet 6
+Packet 6 lost!
+
+Window starting at packet 6
+Sending packet 6
+Sending packet 7
+Sending packet 8
+Packet 8 lost!
+
+Sending packet 6
+Packet 6 lost!
+
+Window starting at packet 6
+Sending packet 6
+Sending packet 7
+Sending packet 8
+Sending packet 6
+Packet 6 lost!
+
+Window starting at packet 6
+Sending packet 6
+Sending packet 6
+Packet 6 lost!
+Sending packet 6
+Packet 6 lost!
+
+Window starting at packet 6
+Sending packet 6
+Sending packet 7
+Sending packet 8
+Packet 8 lost!
+
+Window starting at packet 8
+Sending packet 8
+Sending packet 9
+
+Total transmissions: 15

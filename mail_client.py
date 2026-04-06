@@ -1,38 +1,45 @@
+import socket
 
-import smtplib
+sender = input("Enter sender email: ")
+receiver = input("Enter receiver email: ")
+subject = input("Enter subject: ")
+body = input("Enter message: ")
 
-receiver_email = input("Enter recipient email: ")
-message = input("Enter your message: ")
+server = "localhost"
+port = 1025
 
-sender_email = "client@localhost"
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client_socket.connect((server, port))
 
-server = smtplib.SMTP("localhost", 1025)
+def recv():
+    response = client_socket.recv(1024).decode()
+    print(response)
 
-server.sendmail(sender_email, receiver_email, message)
+def send(cmd):
+    print("C:", cmd)
+    client_socket.send((cmd + "\r\n").encode())
 
-server.quit()
+recv()  
 
-print("Mail transferred successfully!")
+send("HELO localhost")
+recv()
 
-#using goggle service
-'''
-import smtplib
+send(f"MAIL FROM:<{sender}>")
+recv()
 
-sender_email = "kudakemruganksha30@gmail.com"        
-sender_password = "mibg fmug hmep twqz"   
+send(f"RCPT TO:<{receiver}>")
+recv()
 
-receiver_email = input("Enter recipient email: ")
-message = input("Enter your message: ")
+send("DATA")
+recv()
 
-server = smtplib.SMTP("smtp.gmail.com", 587)
-server.starttls()  
+client_socket.send(f"Subject: {subject}\r\n".encode())
+client_socket.send(f"\r\n{body}\r\n.\r\n".encode())
+recv()
 
-server.login(sender_email, sender_password)
+send("QUIT")
+recv()
 
-server.sendmail(sender_email, receiver_email, message)
+client_socket.close()
 
-server.quit()
-
-print("Email sent successfully!")
-'''
-
+print("Mail sent successfully!")
